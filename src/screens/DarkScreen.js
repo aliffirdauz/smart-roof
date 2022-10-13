@@ -50,20 +50,20 @@ export default function BrightScreen() {
                 </View>
                 <View style={styles.details}>
                     <View style={{ flexDirection: 'row' }}>
-                        <Image style={styles.logo2} source={require('../assets/Contour.png')} />
+                        <Image source={require('../assets/Contour.png')} />
                         <Text style={styles.textdetail}>23%</Text>
                     </View>
                     <View style={{ flexDirection: 'row' }}>
-                        <Image style={styles.logo2} source={require('../assets/humidity.png')} />
+                        <Image source={require('../assets/humidity.png')} />
                         <Text style={styles.textdetail}>90%</Text>
                     </View>
                     <View style={{ flexDirection: 'row' }}>
-                        <Image style={styles.logo2} source={require('../assets/wind.png')} />
+                        <Image source={require('../assets/wind.png')} />
                         <Text style={styles.textdetail}>19 km/h</Text>
                     </View>
                 </View>
                 <View style={{ marginTop: 20, backgroundColor: 'rgba(0, 13, 38, 0.3)', borderRadius: 20, padding: 10, width: 300, }}>
-                    <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
+                    <View style={{ flexDirection: 'row', justifyContent: 'space-between', marginBottom: 10 }}>
                         <Text style={styles.textdetail}>Today</Text>
                         <Text style={styles.textdetail}>Mar, 10</Text>
                     </View>
@@ -114,15 +114,13 @@ const styles = StyleSheet.create({
         borderRadius: 20,
         padding: 10,
         marginTop: 20,
-        // marginRight: 20,
-        // marginLeft: 20,
         backgroundColor: 'rgba(0, 13, 38, 0.3)',
     },
     textdetail: {
         fontSize: 18,
         color: '#fff',
         fontWeight: 'bold',
-        marginLeft: 5
+        marginLeft: 5,
     },
     details: {
         flexDirection: 'row',
