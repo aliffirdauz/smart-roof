@@ -18,24 +18,24 @@ function Unionicon() {
 export default function BrightScreen() {
     const navigation = useNavigation();
 
-    const [isEnabled, setIsEnabled] = useState(false);
+    const [isEnabled, setIsEnabled] = useState(true);
     const toggleSwitch = () => {
-        setIsEnabled(false)
-        navigation.navigate('Dark')
+        setIsEnabled(true)
+        navigation.navigate('Bright')
     };
 
     return (
         <>
             <Header
                 placement="left"
-                backgroundColor='#29B2DD'
+                backgroundColor='#0C43AC'
                 leftComponent={<Mapicon />}
                 centerComponent={{ text: 'Bandung', style: { color: '#fff', fontSize: 20, fontWeight: 'bold' } }}
                 rightComponent={<Unionicon />}
 
             />
             <View style={styles.container}>
-                <Image style={styles.logo} source={require('../assets/Sun.png')} />
+                <Image style={styles.logo} source={require('../assets/Rain.png')} />
                 <Text style={styles.suhu}>30°C</Text>
                 <View style={{ flexDirection: 'row', width: 300, 'alignItems': 'center', justifyContent: 'space-between' }}>
                     <Text style={styles.text}>Status :</Text>
@@ -51,15 +51,15 @@ export default function BrightScreen() {
                 <View style={styles.details}>
                     <View style={{ flexDirection: 'row' }}>
                         <Image style={styles.logo2} source={require('../assets/Contour.png')} />
-                        <Text style={styles.textdetail}>57%</Text>
+                        <Text style={styles.textdetail}>23%</Text>
                     </View>
                     <View style={{ flexDirection: 'row' }}>
                         <Image style={styles.logo2} source={require('../assets/humidity.png')} />
-                        <Text style={styles.textdetail}>40%</Text>
+                        <Text style={styles.textdetail}>90%</Text>
                     </View>
                     <View style={{ flexDirection: 'row' }}>
                         <Image style={styles.logo2} source={require('../assets/wind.png')} />
-                        <Text style={styles.textdetail}>15 km/h</Text>
+                        <Text style={styles.textdetail}>19 km/h</Text>
                     </View>
                 </View>
                 <View style={{ marginTop: 20, backgroundColor: 'rgba(0, 13, 38, 0.3)', borderRadius: 20, padding: 10, width: 300, }}>
@@ -99,7 +99,7 @@ export default function BrightScreen() {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: '#29B2DD',
+        backgroundColor: '#0C43AC',
         alignItems: 'center',
     },
     suhu: {
@@ -114,6 +114,8 @@ const styles = StyleSheet.create({
         borderRadius: 20,
         padding: 10,
         marginTop: 20,
+        // marginRight: 20,
+        // marginLeft: 20,
         backgroundColor: 'rgba(0, 13, 38, 0.3)',
     },
     textdetail: {
@@ -136,4 +138,8 @@ const styles = StyleSheet.create({
         marginTop: 20,
         marginRight: 35,
     },
+    logo: {
+        width: 250,
+        height: 250,
+    }
 })

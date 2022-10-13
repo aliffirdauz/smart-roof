@@ -1,7 +1,7 @@
 import { Image, StyleSheet, View, Text } from 'react-native'
 import React from 'react'
 
-const Header = () => {
+const Atasnya = () => {
     return (
         <View style={styles.container}>
             <Image style={{ width : 27, height : 27}} source={require('../assets/map.png')} />
@@ -28,4 +28,4 @@ const styles = StyleSheet.create({
     }
 })
 
-export default Header
+export default Atasnya
