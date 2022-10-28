@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { KeyboardAvoidingView, StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native';
 import { useNavigation } from '@react-navigation/core'
+import { auth } from '../firebase';
 
 const LoginScreen = () => {
     const [email, setEmail] = useState('')
@@ -13,8 +14,14 @@ const LoginScreen = () => {
     }
 
     const handleLogin = () => {
-        console.warn('Logged in!');
-        navigation.navigate('Bright');
+        auth
+            .signInWithEmailAndPassword(email, password)
+            .then(userCredentials => {
+                const user = userCredentials.user;
+                console.warn('Logged in with:', user.email);
+                navigation.navigate('Bright');
+            })
+            .catch(error => alert(error.message))
     }
 
     return (

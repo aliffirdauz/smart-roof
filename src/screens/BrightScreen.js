@@ -2,6 +2,7 @@ import { Image, Switch, StyleSheet, Text, View, TouchableOpacity } from 'react-n
 import React, { useState } from 'react'
 import { Header } from '@rneui/base'
 import { useNavigation } from '@react-navigation/native';
+import { auth } from '../firebase';
 
 function Mapicon() {
     return (
@@ -12,9 +13,19 @@ function Mapicon() {
 function Unionicon() {
     const navigation = useNavigation();
 
+    const handleSignOut = () => {
+        auth
+            .signOut()
+            .then(() => {
+                console.warn('User signed out!');
+                navigation.replace('Login');
+            })
+            .catch(error => alert(error.message))
+    }
+
     return (
 
-        <TouchableOpacity onPress={() => navigation.navigate('Login')}>
+        <TouchableOpacity onPress={handleSignOut}>
             <Image style={{ width: 32, height: 32 }} source={require('../assets/logout.png')} />
         </TouchableOpacity>
 

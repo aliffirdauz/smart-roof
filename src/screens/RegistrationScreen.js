@@ -1,6 +1,7 @@
 import { KeyboardAvoidingView, StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native';
 import React, { useState } from 'react';
 import { useNavigation } from '@react-navigation/core';
+import { auth } from '../firebase';
 
 export default function RegistrationScreen() {
     const [email, setEmail] = useState('')
@@ -14,8 +15,15 @@ export default function RegistrationScreen() {
             alert("Passwords don't match.")
             return
         }
-        console.warn('Registered!');
-        navigation.navigate('Login');
+        auth
+            .createUserWithEmailAndPassword(email, password)
+            .then(userCredentials => {
+                const user = userCredentials.user;
+                console.log('Registered with:', user.email);
+                alert('Registered!', `Registered with: ${user.email}`);
+                navigation.navigate('Login');
+            })
+            .catch(error => alert(error.message))
     }
 
     const handleLogin = () => {

@@ -12,10 +12,21 @@ function Mapicon() {
 function Unionicon() {
     const navigation = useNavigation();
 
+    const handleSignOut = () => {
+        auth
+            .signOut()
+            .then(() => {
+                navigation.replace('Login');
+            })
+            .catch(error => alert(error.message))
+    }
+
     return (
-        <TouchableOpacity onPress={() => navigation.navigate('Login')}>
+
+        <TouchableOpacity onPress={handleSignOut}>
             <Image style={{ width: 32, height: 32 }} source={require('../assets/logout.png')} />
         </TouchableOpacity>
+
     );
 }
 
