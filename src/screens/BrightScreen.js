@@ -1,4 +1,4 @@
-import { Image, Switch, StyleSheet, Text, View } from 'react-native'
+import { Image, Switch, StyleSheet, Text, View, TouchableOpacity } from 'react-native'
 import React, { useState } from 'react'
 import { Header } from '@rneui/base'
 import { useNavigation } from '@react-navigation/native';
@@ -10,12 +10,19 @@ function Mapicon() {
 }
 
 function Unionicon() {
+    const navigation = useNavigation();
+
     return (
-        <Image style={{ width: 24, height: 24 }} source={require('../assets/Union.png')} />
+
+        <TouchableOpacity onPress={() => navigation.navigate('Login')}>
+            <Image style={{ width: 32, height: 32 }} source={require('../assets/logout.png')} />
+        </TouchableOpacity>
+
     );
 }
 
 export default function BrightScreen() {
+
     const navigation = useNavigation();
 
     const [isEnabled, setIsEnabled] = useState(false);
@@ -26,15 +33,15 @@ export default function BrightScreen() {
 
     return (
         <>
-            <Header
-                placement="left"
-                backgroundColor='#29B2DD'
-                leftComponent={<Mapicon />}
-                centerComponent={{ text: 'Bandung', style: { color: '#fff', fontSize: 20, fontWeight: 'bold' } }}
-                rightComponent={<Unionicon />}
-
-            />
             <View style={styles.container}>
+                <Header
+                    placement="left"
+                    backgroundColor='#29B2DD'
+                    leftComponent={<Mapicon />}
+                    centerComponent={{ text: 'Bandung', style: { color: '#fff', fontSize: 20, fontWeight: 'bold' } }}
+                    rightComponent={<Unionicon />}
+                    containerStyle={{ marginHorizontal: 20 }}
+                />
                 <Image style={styles.logo} source={require('../assets/Sun.png')} />
                 <Text style={styles.suhu}>30°C</Text>
                 <View style={{ flexDirection: 'row', width: 300, 'alignItems': 'center', justifyContent: 'space-between' }}>
